@@ -8,7 +8,7 @@ SQL실행 순서상 가장 마지막에 실행됨.
 
 내림차순 DESC
 
-```
+```SQL
 SELECT MOVIE_NAME, RATING
   FROM MOVIE_INFO
  ORDER BY RATING DESC;
@@ -31,7 +31,7 @@ SELECT MOVIE_NAME, RATING
 - SELECT에서 지정한 별칭(AS 별칭)으로 정렬
 - order by 별칭 [asc/desc]
 5. [case](함수.md#case-문법)문법 사용
-```
+```SQL
 SELECT MOVIE_NAME, GENRE, RATING
   FROM MOVIE_INFO
  ORDER BY CASE GENRE WHEN 'SF' THEN 1

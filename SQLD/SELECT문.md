@@ -58,7 +58,7 @@ DISTINCT로 조회 결과에서 중복 데이터를 제거
 
 **전체 표시**
 
-```
+```SQL
 SELECT ALL MAJOR
 FROM STUDENT
 ```
@@ -66,13 +66,17 @@ ALL로 중복을 제거하지 않고 전체 데이터를 그대로 조회한다.
 
 기본값.
 
+*이 ALL은 중복 제거 여부를 지정하는 키워드*
+
+*비교 조건에서 사용하는 다중행 연산자 ALL과의 혼동에 주의*
+
 ### ALIAS(AS)
 
 **출력 컬럼에 별칭 부여**
 
 조회 시, 출력되는 컬럼명을 임의 지정.
 
-```
+```SQL
 SELECT STUDENT_ID AS 학생ID
      , STUDENT_NAME AS 이름
 FROM STUDENT;
@@ -88,7 +92,7 @@ ALIAS 작성 시 주의사항
 5. AS 생략 : 선택 사항. 그냥 띄어쓰기 후 별칭 적어도 됨.
 6. 자동 대문자화 : Oracle은 자동으로 대문자화함. 소문자 유지하려면 큰따옴표("") 사용.
 
-```
+```SQL
 SELECT COL1 AS HI -- 가능
      , COL2 AS _HI -- 불가능
      , COL3 AS AS -- 불가능

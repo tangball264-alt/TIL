@@ -7,13 +7,13 @@
 ### 데이터 조회 SQL의 실행 순서
 
 1. 데이터를 조회하는 SQL들과 작성 순서(select, from 외에는 선택 사항)
-```
-SELECT      테이블에서 컬럼을 명시. 원하는 컬럼만 가져온다.
-FROM        데이터를 가져올 테이블을 지정한다.
-WHERE       테이블에서 조건을 명시해 원하는 튜플만 가져온다.
-GROUP BY    특정 컬럼을 기준으로 대상을 그룹화한다.
-HAVING      그륩화한 결과를 기준으로 원하는 튜플만 가져온다.
-ORDER BY    특정 컬럼을 기준으로 정렬해 재출력한다.
+```SQL
+SELECT      -- 테이블에서 컬럼을 명시. 원하는 컬럼만 가져온다.
+FROM        -- 데이터를 가져올 테이블을 지정한다.
+WHERE       -- 테이블에서 조건을 명시해 원하는 튜플만 가져온다.
+GROUP BY    -- 특정 컬럼을 기준으로 대상을 그룹화한다.
+HAVING      -- 그륩화한 결과를 기준으로 원하는 튜플만 가져온다.
+ORDER BY    -- 특정 컬럼을 기준으로 정렬해 재출력한다.
 ```
 2. 실제 이 SQL들의 실행 순서
 from -> where -> group by -> having -> select -> order by
@@ -32,7 +32,7 @@ WHERE절에서 사용할 수 있는 조건 연산자.
 - 이 때, 논리 연산자가 여러 개 사용된다면 AND의 우선순위가 OR보다 높다. OR을 우선하고자 한다면 괄호를 이용한다.
 
 예시
-```
+```SQL
 SELECT EMP_ID, DEPT, SALARY
   FROM EMPLOYEE
  WHERE (DEPT = '인사팀'
@@ -48,7 +48,7 @@ NOT, !=, <>, ^= 등으로 표현. 이것들 중 어느 것을 써도 작동한�
 
 조건의 참/거짓을 반대로 변환한다.
 
-```
+```SQL
 WHERE DEPT != '개발팀'
 WHERE DEPT <> '개발팀'
 WHERE DEPT ^= '개발팀'
@@ -64,7 +64,7 @@ where는 조건문이 true인 튜플을 가져온다.
 
 ### NULL연산자
 IS NULL, IS NOT NULL을 사용한다.(null은 '='비교가 불가능.)
-```
+```SQL
 WHERE 컬럼명 IS NULL
   AND 컬럼명 IS NOT NULL;
 ```
@@ -77,7 +77,7 @@ IN, BETWEEN, LIKE 등.
 
 -OR 조건의 조합과 같다.
 
-```
+```SQL
 SELECT EMP_ID, EMP_NAME, DEPT
   FROM EMPLOYEE
  WHERE DEPT = '개발팀'
@@ -96,7 +96,7 @@ SELECT EMP_ID, EMP_NAME, DEPT
 - 범위 조건을 간단하게 표현할 수 있다.
 - 비교 연산의 AND와 같다.
 
-```
+```SQL
 SELECT EMP_ID, EMP_NAME, SALARY
   FROM EMPLOYEE
  WHERE SALARY >= 3500
@@ -121,13 +121,13 @@ SELECT EMP_ID, EMP_NAME, SALARY
 1. '%' : 0개 이상 임의의 문자를 매칭. ('김%' = 김땡땡, 김땡, 김땡땡땡.... 전부.)
 2. '_' : 정확히 1개의 문자 매칭. ('김_' = 김땡)
 
-```
+```SQL
 SELECT EMP_ID, EMP_NAME
   FROM EMPLOYEE
  WHERE EMP_NAME LIKE '김%';
 ```
 '김'으로 시작하는 이름
-```
+```SQL
 SELECT EMP_ID, EMP_NAME
   FROM EMPLOYEE
  WHERE EMP_ID LIKE 'E__1';
@@ -151,16 +151,16 @@ id가 'E'로 시작하고, 마지막은 '1', 그리고 사이에 2 글자 있는
 
 where절과 형변환 함수를 함께 사용하여 수행한다.
 
-```
-# 2024년 1월 20일오후 1시부터 오후 3시 사이에 발급된 데이터를 조회하는 쿼리.
+```SQL
+-- 2024년 1월 20일오후 1시부터 오후 3시 사이에 발급된 데이터를 조회하는 쿼리.
 SELECT *
   FROM 증명서발급이력
  WHERE ISSUE_DT >=TO_DATE(202401201300)
    AND ISSUE_DT <= TO_DATE(202401201500)
 ```
 혹은 비슷한 요구에 대하여 to_char을 사용하여 해결하면
-```
-# 2024년 1월 20일에 발급된 데이터 조회
+```SQL
+-- 2024년 1월 20일에 발급된 데이터 조회
 SELECT *
   FROM 증명서발급이력
  WHERE TO_CHAR(ISSUE_DT, 'YYYYMMDD')=20240120

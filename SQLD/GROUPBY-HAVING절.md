@@ -5,7 +5,7 @@
 
 > 예시
 > 
-> ```
+> ```SQL
 > SELECT 소속반, COUNT(*) AS 반별인원수
 > FROM 수강생정보
 > GROUP BY 소속반;
