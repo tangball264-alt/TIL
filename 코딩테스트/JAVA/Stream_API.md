@@ -47,7 +47,7 @@ Stream<String> stream = Arrays.stream(arr);
 List<String> list = Arrays.asList("a","b","c");
 Stream<String> stream = list.stream();
 ```
-3. Stream.builder()
+3. Stream.builder() *어떤 복잡한 객체를 만들 때 값을 하나씩 차근차근 넣은 뒤 최종적으로 원하는 결과물을 환성해내는 설계 패턴. 이어서 .add를 체이닝해 원하는 스트림 생성.*
 ```java
 Stream<String> builderStream = Stream.<String>builder()
     .add("a").add("b").add("c")
