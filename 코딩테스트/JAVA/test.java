@@ -5,16 +5,21 @@ import java.io.*;
 public class test {
     
     public static void main(String[] args) {
+        String inputstr = "hello";
+        int inputnum = 9;
         int[] inputarr = {1, 2, 3, 4, 5};
         test myTest = new test();
 
-        int[] result = myTest.solution(inputarr);
-        System.out.println("result: " + Arrays.toString(result));
+        int result = myTest.solution(inputnum);
+        System.out.println("result: " + result);
     }
-    public int[] solution(int[] num_list) {
-        for(int i = 0; i < num_list.length; i++) {
-            num_list[i] = num_list[i]%2==0?1:0;
+    public int solution(int n) {
+        int answer = 0;
+        for(int i = 1; i <= Math.sqrt(answer); i++) {
+            if(n % i == 0) {
+                answer += i;
+            }
         }
-        return {num_list.}
+        return answer;
     }
 }
