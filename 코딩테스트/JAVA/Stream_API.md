@@ -68,6 +68,17 @@ IntStream intStream = IntStream.range(1, 5); // [1, 2, 3, 4]
 ```java
 Stream<String> parallelStream = list.parallelStream();
 ```
+7. string 값 받기
+```java
+IntStream stringStream = myString.chars();
+```
+문자열을 문자별 유니코드값의 IntStream으로 변환 (예: '5' → 53)
+
+주요 유니코드값
+
+'0' : 48
+'A' : 65
+'a' : 97
 
 ---
 
@@ -297,3 +308,16 @@ python식은 django 프로젝트 문서에 작성된 파일 있음.[문서](/Pyt
 ```
 형태 사용.
 
+
+## 예시
+```java
+mystream.mapToObjj(i -> (char) i);
+```
+mystream의 값이 각각 숫자 i를 가지는데, 이를 문자i로 변환 즉, IntStream값을 Stream<Character>로 변환.
+i가 65이라면, 결과적으로 'A'가 됨.
+chars(): 문자열을 문자별 유니코드값의 IntStream으로 변환 (예: '5' → 53)
+mapToObj(i -> (char) i): IntStream의 각 int 값을 (char)로 형변환해서 Stream<Character>로 변환. 즉 53 → '5'(문자)
+filter(Character::isDigit): Character 객체가 숫자 문자인지 필터링
+map(String::valueOf): Character를 String으로 변환. 예: '5'(char) → "5"(String)
+mapToInt(Integer::valueOf): String을 다시 정수로 파싱해서 IntStream으로 변환. "5" → 5(int)
+sum(): 전부 더함
